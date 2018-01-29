@@ -12,6 +12,7 @@ musica = ['Gosta de música?','Claro que gosto! Quem não iria gosta?','Qual sua
 bot.set_trainer(ListTrainer)
 bot.train(conversa)
 bot.train(musica)
+
 while True:
     quest = input('Você: ')
     resposta = bot.get_response(quest)
