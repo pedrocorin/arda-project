@@ -1,18 +1,22 @@
 # Arda - Inteligencia Artificial
 # By Pedro Corin - 2018
+from chatterbot.trainers import ListTrainer
+from chatterbot import ChatBot
 
-print('Olá! Qual seu nome?')
-nome = input('>: ')
+bot = ChatBot('Arda')
 
-if 'Pedro' in nome:
-    print('Hello Sir!')
-else:
-    print('Muito prazer {}!'.format(nome))
+conversa = ['Olá','Olá', 'Tudo bem?', 'Tudo ótimo! E com você?','Qual seu nome?','Arda e o seu?']
+musica = ['Gosta de música?','Claro que gosto! Quem não iria gosta?','Qual sua banda preferida?','Pink Floyd. E a sua?','Guns','Guns n Roses é demais!']
 
+
+bot.set_trainer(ListTrainer)
+bot.train(conversa)
+bot.train(musica)
 while True:
-    resp = input('>: ')
-    if resp == 'tchau!':
-        break
+    quest = input('Você: ')
+    resposta = bot.get_response(quest)
+    if float(response.confidence) > 0.5:
+        print('Arda: ', resposta)
     else:
-        print('Vamos continuar conversando')
-print('Bye, bye {}'.format(nome))
+        print('Arda: Eu não sei.')
+
